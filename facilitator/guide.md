@@ -1,6 +1,6 @@
 # 講師手冊
 
-給主講者與協助者。**不發給學員**（含小測驗解答與評分表）。課程設計與決定見 [maintainers/PLAN.md](../maintainers/PLAN.md)。
+給主講者與協助者。**不發給學員**（含評分表）。課程設計與決定見 [maintainers/PLAN.md](../maintainers/PLAN.md)。
 
 ## 內容
 
@@ -9,7 +9,6 @@
 | [sessions/](sessions/) | 每場的時間表、講稿重點、常見卡點 |
 | [progress-sheet.md](progress-sheet.md) | 進度表：人名 × 步驟，用來找出卡住的人，也用來記剪輯時間點 |
 | [grading/](grading/) | S6、S8 結業檢查的評分表 |
-| [s0-quiz-answers.md](s0-quiz-answers.md) | S0 小測驗解答與怎麼解讀 |
 
 學員看的示範頁由 `sessions/` 的 `index.md` 產生（見 [CLAUDE.md](../CLAUDE.md)）。
 

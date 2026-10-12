@@ -13,7 +13,7 @@
 | --- | --- | --- |
 | `sessions/` | 輸出（學員看得到） | 每場的示範頁原稿 `index.md` 與每一步的 `starter`／`solution`／`test` |
 | `shared/` | 輸出 | 從 react-to-vue 標記版本複製的樣式與腳本；**不可手改**，雜湊記在 `SOURCE.json` |
-| `facilitator/` | 輸出（只給講師，不發給學員） | 講師手冊、進度表、評分表、小測驗解答 |
+| `facilitator/` | 輸出（只給講師，不發給學員） | 講師手冊、進度表、評分表 |
 | `dist/` | 建置結果（不進 git） | `npm run build` 產生的示範頁 |
 | `maintainers/` | 維護 | `PLAN.md`、`TASKS.md`、`tools/`、測試、`package.json`、CI 用的相依套件 |
 

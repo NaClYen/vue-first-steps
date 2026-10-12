@@ -88,7 +88,7 @@
 
 | 編號 | 狀態 | 任務 | 驗證 | 完成日 |
 | --- | --- | --- | --- | --- |
-| M2-1 | `[~]` | S0 課前：三個連結截圖作業、JS 小測驗（約 20 分鐘）。內容在 `sessions/00-pre-class/`，解答在 `facilitator/s0-quiz-answers.md` | 在公司環境走過一遍（agent 只在沙箱驗證過 play.vuejs.org 連結與離線 check.html；StackBlitz 沙箱連不到，未驗證） | |
+| M2-1 | `[~]` | S0 課前：三個連結截圖作業（約 10 分鐘）。內容在 `sessions/00-pre-class/`（小測驗已於 2026-10-12 移除） | 在公司環境走過一遍（agent 只在沙箱驗證過 play.vuejs.org 連結與離線 check.html；StackBlitz 沙箱連不到，未驗證） | |
 | M2-2 | `[x]` | S1：`.vue` 結構、`{{ }}`、`@click`、`ref` 與 `.value`；steps 的 starter／solution／test | 每步 CI 四項檢查過（CI run 38198340703 綠燈；測試對 starter 失敗、對 solution 通過） | 2026-10-12 |
 | M2-3 | `[x]` | S2：`reactive`、`v-model`、`@submit.prevent`、讀錯誤訊息與主控台 | 同上（CI run 38198340703 綠燈；測試對 starter 失敗、對 solution 通過） | 2026-10-12 |
 | M2-4 | `[~]` | 進度表範本（人名 × 步驟）：`facilitator/progress-sheet.md` | 試行時實際使用 | |
@@ -159,6 +159,7 @@
 
 新的在上面。格式：`日期　編號　一句話`。
 
+- 2026-10-12　S0　移除 JS 小測驗（使用者決定：偏離主要目標，且 D4 已決定不加補強場後它沒有後續用途）；刪除 `facilitator/s0-quiz-answers.md`，S0 縮為約 10 分鐘
 - 2026-10-12　S0　「連結 1」改成寫死的 play.vuejs.org 連結（原本是 `@play standalone` 建置指令，只有建置後的示範頁才會變成連結，直接看 index.md 是點不了的）；測試會檢查連結解回 `standalone/App.vue`，範例改了就會失敗。示範頁的外部連結一律新分頁開啟
 - 2026-10-12　D6　使用者也授權 agent 打標記，但再試一次仍被擋：`git push` 標記回 `unexpected disconnect`，環境的 `gh` 憑證無效，GitHub 工具沒有建立標記的功能。仍需人打
 - 2026-10-12　M2　完成 S0、S1、S2 內容（S1、S2 各 3 步，測試對 starter 會失敗、對 solution 會過）、講師手冊、進度表、評分表、S0 解答；停在 M2-7（預錄）、M2-8（招募）、M2-9（試行），這三項要人做。M3 依計畫等試行結果，不先動
