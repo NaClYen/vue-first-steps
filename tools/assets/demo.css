@@ -1,0 +1,11 @@
+/* 視訊分享用：1920×1080、縮放 125–150% 下仍清楚。字大、對比高、一屏不塞滿。 */
+:root:not([data-theme='dark']) { --bg: #ffffff; --fg: #111816; }
+html { font-size: 22px; }
+.page { max-width: 62rem; }
+.doc.demo h1 { font-size: 2.2rem; }
+.doc.demo h2 { font-size: 1.6rem; margin-top: 3rem; padding-top: 1rem; border-top: 2px solid var(--line); scroll-margin-top: 1rem; }
+.doc.demo p, .doc.demo li { line-height: 1.7; }
+pre.code { font-size: 1.05rem; line-height: 1.5; }
+.doc.demo h2.current { outline: 3px solid var(--focus); outline-offset: 6px; }
+p.play a { display: inline-block; padding: 0.4rem 0.9rem; border: 2px solid var(--vue); border-radius: 6px; font-weight: 600; }
+.demo-hint { position: fixed; right: 0.8rem; bottom: 0.6rem; font-size: 0.6rem; color: var(--muted); }

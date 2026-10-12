@@ -1,0 +1,628 @@
+/* 文件頁共用樣式：色彩 token、版面元件、程式碼配色。
+   所有 docs 內的 HTML 都引用這一份。 */
+
+/* 版面：單欄閱讀，區塊之間用細線分隔；Vue 與 React 用兩個固定色標示，其餘維持中性。 */
+:root {
+  --bg: #f4f6f5;
+  --surface: #ffffff;
+  --fg: #1d2623;
+  --muted: #5b6863;
+  --line: #d9e0dd;
+  --code-bg: #eaefed;
+  --vue: #2f8f64;
+  --vue-bg: #e3f3eb;
+  --react: #2a74a6;
+  --react-bg: #e1eef7;
+  --shared: #8a6a1f;
+  --shared-bg: #f5ecd5;
+  --focus: #b4410f;
+  --hl-keyword: #7a3fb0;
+  --hl-string: #1d7a46;
+  --hl-comment: #586864;
+  --hl-number: #a35200;
+  --hl-fn: #1b64a8;
+  --hl-tag: #a8325e;
+  --hl-attr: #8f4a00;
+  --hl-type: #0b6b7d;
+  --hl-meta: #6b5a8a;
+  --font-body:
+    system-ui, -apple-system, 'Segoe UI', 'Noto Sans TC', 'PingFang TC',
+    'Microsoft JhengHei', sans-serif;
+  --font-mono: ui-monospace, 'Cascadia Code', 'SF Mono', Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) {
+    --bg: #141a18;
+    --surface: #1c2421;
+    --fg: #e4ebe8;
+    --muted: #9aa8a2;
+    --line: #2f3a36;
+    --code-bg: #26302c;
+    --vue: #5cc99a;
+    --vue-bg: #1c3a2e;
+    --react: #6bb6e6;
+    --react-bg: #1b3345;
+    --shared: #d9b865;
+    --shared-bg: #3a3119;
+    --focus: #ff9560;
+    --hl-keyword: #c59cf0;
+    --hl-string: #8fd6a4;
+    --hl-comment: #93a79f;
+    --hl-number: #f0b36b;
+    --hl-fn: #8cc2f0;
+    --hl-tag: #f08ab0;
+    --hl-attr: #f0b36b;
+    --hl-type: #6fd0e0;
+    --hl-meta: #b7a6d9;
+    color-scheme: dark;
+  }
+}
+:root[data-theme='dark'] {
+  --bg: #141a18;
+  --surface: #1c2421;
+  --fg: #e4ebe8;
+  --muted: #9aa8a2;
+  --line: #2f3a36;
+  --code-bg: #26302c;
+  --vue: #5cc99a;
+  --vue-bg: #1c3a2e;
+  --react: #6bb6e6;
+  --react-bg: #1b3345;
+  --shared: #d9b865;
+  --shared-bg: #3a3119;
+  --focus: #ff9560;
+  --hl-keyword: #c59cf0;
+  --hl-string: #8fd6a4;
+  --hl-comment: #93a79f;
+  --hl-number: #f0b36b;
+  --hl-fn: #8cc2f0;
+  --hl-tag: #f08ab0;
+  --hl-attr: #f0b36b;
+  --hl-type: #6fd0e0;
+  --hl-meta: #b7a6d9;
+  color-scheme: dark;
+}
+
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  padding-inline: 16px;
+  padding-block: 32px 64px;
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.7;
+}
+.page {
+  max-width: 960px;
+  margin: 0 auto;
+  display: grid;
+  gap: 48px;
+}
+h1,
+h2,
+h3 {
+  margin: 0;
+  line-height: 1.3;
+  text-wrap: balance;
+}
+h1 {
+  font-size: clamp(1.7rem, 4vw, 2.3rem);
+}
+h2 {
+  font-size: 1.35rem;
+}
+h3 {
+  font-size: 1.05rem;
+}
+p {
+  margin: 0;
+}
+a {
+  color: var(--react);
+}
+a:focus-visible,
+button:focus-visible {
+  outline: 3px solid var(--focus);
+  outline-offset: 2px;
+}
+code,
+pre {
+  font-family: var(--font-mono);
+  font-size: 0.9em;
+}
+code {
+  background: var(--code-bg);
+  padding: 0.1em 0.4em;
+  border-radius: 4px;
+}
+.lede {
+  color: var(--muted);
+  max-width: 42em;
+  margin-top: 8px;
+}
+section {
+  display: grid;
+  gap: 16px;
+  min-width: 0;
+}
+.section-note {
+  color: var(--muted);
+  max-width: 46em;
+}
+
+/* 標籤：Vue／React／共用 */
+.tag {
+  display: inline-block;
+  padding: 0 0.55em;
+  border-radius: 999px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  line-height: 1.7;
+  white-space: nowrap;
+}
+.tag.vue {
+  color: var(--vue);
+  background: var(--vue-bg);
+}
+.tag.react {
+  color: var(--react);
+  background: var(--react-bg);
+}
+.tag.shared {
+  color: var(--shared);
+  background: var(--shared-bg);
+}
+
+/* 1. 三步開始：真的有先後順序，才用編號 */
+.steps {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 16px;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  counter-reset: step;
+}
+.steps li {
+  counter-increment: step;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 16px;
+  display: grid;
+  gap: 8px;
+  align-content: start;
+  min-width: 0;
+}
+.steps li::before {
+  content: counter(step);
+  width: 1.8em;
+  height: 1.8em;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--fg);
+  color: var(--bg);
+  font-weight: 700;
+  font-size: 0.9rem;
+}
+.cmd {
+  display: flex;
+  align-items: stretch;
+  gap: 8px;
+  min-width: 0;
+}
+.cmd code {
+  flex: 1;
+  min-width: 0;
+  padding: 0.5em 0.7em;
+  overflow-x: auto;
+  white-space: nowrap;
+  border-radius: 6px;
+}
+button {
+  font: inherit;
+  font-size: 0.85rem;
+  color: var(--fg);
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  padding: 0 0.8em;
+  cursor: pointer;
+}
+button:hover {
+  background: var(--code-bg);
+}
+.small {
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+
+/* 2. 路徑卡片 */
+.paths {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+}
+.path {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 16px;
+  display: grid;
+  gap: 6px;
+  align-content: start;
+  min-width: 0;
+}
+.path .where {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: var(--muted);
+  overflow-wrap: anywhere;
+}
+.check {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 16px;
+  display: grid;
+  gap: 6px;
+}
+.check ul {
+  margin: 0;
+  padding-left: 1.2em;
+}
+
+/* 3. 資料流 */
+.toggle {
+  display: inline-flex;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  overflow: hidden;
+  width: fit-content;
+  background: var(--surface);
+}
+.toggle button {
+  border: 0;
+  border-radius: 0;
+  padding: 0.45em 1.1em;
+  background: transparent;
+}
+.toggle button[aria-pressed='true'].is-vue {
+  background: var(--vue-bg);
+  color: var(--vue);
+  font-weight: 700;
+}
+.toggle button[aria-pressed='true'].is-react {
+  background: var(--react-bg);
+  color: var(--react);
+  font-weight: 700;
+}
+.flow {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 0;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+.flow li {
+  position: relative;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  padding: 14px 12px;
+  display: grid;
+  gap: 6px;
+  align-content: start;
+  min-width: 0;
+  margin-right: 22px;
+  border-radius: 8px;
+}
+.flow li:last-child {
+  margin-right: 0;
+}
+.flow li:not(:last-child)::after {
+  content: '→';
+  position: absolute;
+  right: -22px;
+  top: 50%;
+  width: 22px;
+  text-align: center;
+  transform: translateY(-50%);
+  color: var(--muted);
+}
+.flow .who {
+  font-size: 0.78rem;
+  color: var(--muted);
+}
+.flow .term {
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  min-height: 2.6em;
+  overflow-wrap: anywhere;
+}
+.flow .term .vue-term {
+  color: var(--vue);
+}
+.flow .term .react-term {
+  color: var(--react);
+}
+[data-view='vue'] .react-term,
+[data-view='react'] .vue-term {
+  display: none;
+}
+.loop {
+  border-left: 4px solid var(--shared);
+  background: var(--shared-bg);
+  padding: 10px 14px;
+  border-radius: 0 8px 8px 0;
+}
+
+/* 4. 專案地圖 */
+.tree {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 8px 16px;
+  overflow-x: auto;
+}
+.tree ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.tree ul ul {
+  margin-left: 1.4em;
+  border-left: 1px solid var(--line);
+  padding-left: 1em;
+}
+.tree li {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  column-gap: 10px;
+  padding: 3px 0;
+}
+.tree li > ul {
+  flex-basis: 100%;
+}
+.tree .name {
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+.tree .what {
+  color: var(--muted);
+  font-size: 0.92rem;
+}
+.legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 12px;
+  align-items: center;
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+
+/* 5. 指令與 6. 對照表 */
+.table-wrap {
+  overflow-x: auto;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+}
+table {
+  border-collapse: collapse;
+  width: 100%;
+  min-width: 560px;
+}
+th,
+td {
+  text-align: left;
+  padding: 10px 14px;
+  border-bottom: 1px solid var(--line);
+  vertical-align: top;
+}
+tr:last-child td {
+  border-bottom: 0;
+}
+th {
+  font-size: 0.85rem;
+  color: var(--muted);
+  font-weight: 600;
+  background: var(--code-bg);
+}
+td.vue-cell {
+  color: var(--vue);
+}
+td.react-cell {
+  color: var(--react);
+}
+td code {
+  background: transparent;
+  padding: 0;
+  color: inherit;
+  font-weight: 600;
+}
+footer {
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+@media (max-width: 760px) {
+  .flow {
+    grid-template-columns: 1fr;
+    gap: 22px;
+  }
+  .flow li {
+    margin-right: 0;
+  }
+  .flow li:not(:last-child)::after {
+    content: '↓';
+    right: auto;
+    left: 50%;
+    top: auto;
+    bottom: -22px;
+    transform: translateX(-50%);
+    width: auto;
+    height: 22px;
+    line-height: 22px;
+  }
+}
+@media (prefers-reduced-motion: no-preference) {
+  button {
+    transition: background 0.15s;
+  }
+}
+
+/* ── 程式碼區塊與 highlight.js 配色 ── */
+pre.code {
+  margin: 0;
+  padding: 12px 14px;
+  background: var(--code-bg);
+  border-radius: 8px;
+  overflow-x: auto;
+  line-height: 1.55;
+  font-size: 0.85rem;
+  tab-size: 2;
+}
+pre.code code {
+  background: transparent;
+  padding: 0;
+  font-size: inherit;
+  white-space: pre;
+}
+.hljs-keyword,
+.hljs-built_in,
+.hljs-literal,
+.hljs-selector-tag {
+  color: var(--hl-keyword);
+}
+.hljs-string,
+.hljs-regexp,
+.hljs-template-variable {
+  color: var(--hl-string);
+}
+.hljs-comment,
+.hljs-quote {
+  color: var(--hl-comment);
+  font-style: italic;
+}
+.hljs-number,
+.hljs-symbol,
+.hljs-bullet {
+  color: var(--hl-number);
+}
+.hljs-title,
+.hljs-title.function_,
+.hljs-function .hljs-title {
+  color: var(--hl-fn);
+}
+.hljs-title.class_,
+.hljs-type,
+.hljs-class .hljs-title {
+  color: var(--hl-type);
+}
+.hljs-name,
+.hljs-tag {
+  color: var(--hl-tag);
+}
+.hljs-attr,
+.hljs-attribute,
+.hljs-variable,
+.hljs-params {
+  color: var(--hl-attr);
+}
+.hljs-meta,
+.hljs-doctag,
+.hljs-subst {
+  color: var(--hl-meta);
+}
+.hljs-addition {
+  color: var(--hl-string);
+}
+.hljs-deletion {
+  color: var(--hl-tag);
+}
+
+/* ── 由 Markdown 轉出的文件頁 ── */
+.doc {
+  display: grid;
+  gap: 16px;
+  min-width: 0;
+}
+.doc > h1 {
+  margin-bottom: 8px;
+}
+.doc > h2 {
+  margin-top: 24px;
+  padding-top: 16px;
+  border-top: 1px solid var(--line);
+}
+.doc > h3 {
+  margin-top: 8px;
+}
+.doc ul,
+.doc ol {
+  margin: 0;
+  padding-left: 1.4em;
+  display: grid;
+  gap: 4px;
+}
+.doc li > ul,
+.doc li > ol {
+  margin-top: 4px;
+}
+.doc blockquote {
+  margin: 0;
+  padding: 8px 14px;
+  border-left: 4px solid var(--shared);
+  background: var(--shared-bg);
+  border-radius: 0 8px 8px 0;
+}
+.doc hr {
+  border: 0;
+  border-top: 1px solid var(--line);
+  width: 100%;
+}
+.doc a {
+  overflow-wrap: anywhere;
+}
+.doc .table-wrap table {
+  min-width: 480px;
+}
+.doc-top {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 16px;
+  font-size: 0.9rem;
+  color: var(--muted);
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--line);
+}
+.doc-top a {
+  color: var(--muted);
+}
+.source-path {
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
+  color: var(--muted);
+  overflow-wrap: anywhere;
+}
+
+.copy-path {
+  margin-left: 6px;
+  padding: 0 0.5em;
+  font-size: 0.75rem;
+  line-height: 1.6;
+  color: var(--muted);
+  vertical-align: baseline;
+  white-space: nowrap;
+}
+.files .copy-path {
+  margin-left: -4px;
+}

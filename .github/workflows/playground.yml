@@ -1,0 +1,22 @@
+name: Playground link check
+
+# play.vuejs.org 的網址格式沒有官方文件，每週用真的瀏覽器開一次產生的連結。
+on:
+  schedule:
+    - cron: '17 3 * * 1'
+  workflow_dispatch:
+
+jobs:
+  playground:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+        env:
+          PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD: '1'
+      - run: npx playwright-core install --with-deps chromium
+      - run: npm run check:playground

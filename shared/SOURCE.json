@@ -1,0 +1,23 @@
+{
+  "repo": "https://github.com/NaClYen/react-to-vue",
+  "ref": "edaefacd78c8ab9ac3c8c9bf299650fe53b95953",
+  "commit": "edaefacd78c8ab9ac3c8c9bf299650fe53b95953",
+  "files": {
+    "guide.css": {
+      "from": "docs/assets/guide.css",
+      "sha256": "0c3de1f8af2c05a681b4fbdfb91ee910f608a627b9958dc6e755bff0ce61af7f"
+    },
+    "guide.js": {
+      "from": "docs/assets/guide.js",
+      "sha256": "1d25ca33fc052ca092686c63834b4814cc19742b94c97c93299803f256e944af"
+    },
+    "highlight.min.js": {
+      "from": "docs/assets/highlight.min.js",
+      "sha256": "2ecd0ba93227cef1a7de0bfb009ec5f62bbfa3fbcc280be407e40586c9d4cd37"
+    },
+    "highlight.LICENSE.txt": {
+      "from": "docs/assets/highlight.LICENSE.txt",
+      "sha256": "6c081431591d9df696c82dc598fe1423765b8a299b200ed00b281afd0f64c490"
+    }
+  }
+}

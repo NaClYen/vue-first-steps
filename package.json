@@ -1,0 +1,37 @@
+{
+  "name": "vue-first-steps",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "給會 JavaScript、沒碰過 Vue 的工程師的視訊課程教材與維護工具",
+  "engines": {
+    "node": "^22.12.0 || ^24.0.0"
+  },
+  "scripts": {
+    "check": "npm run check:steps && npm run check:shared && npm test",
+    "check:steps": "node tools/check-steps.mjs",
+    "check:shared": "node tools/check-shared.mjs",
+    "check:playground": "node tools/check-playground.mjs",
+    "test": "vitest run",
+    "test:browser": "node tools/test-standalone.mjs",
+    "build": "node tools/build-pages.mjs",
+    "diff": "node tools/step-diff.mjs",
+    "link": "node tools/playground-link.mjs",
+    "standalone": "node tools/build-standalone.mjs"
+  },
+  "dependencies": {
+    "vue": "3.5.43"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "6.0.9",
+    "@vue/compiler-sfc": "3.5.43",
+    "@vue/test-utils": "2.5.1",
+    "diff": "8.0.2",
+    "esbuild": "0.28.2",
+    "jsdom": "26.1.0",
+    "marked": "16.4.2",
+    "playwright-core": "1.56.1",
+    "vite": "8.3.2",
+    "vitest": "5.0.3"
+  }
+}

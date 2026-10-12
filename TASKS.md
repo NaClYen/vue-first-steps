@@ -15,7 +15,7 @@
 | 里程碑 | 內容 | 狀態 | 完成日 |
 | --- | --- | --- | --- |
 | D | 待決事項 | `[ ]` | |
-| M0 | repo 骨架與 CI | `[ ]` | |
+| M0 | repo 骨架與 CI | `[~]` | |
 | M1 🚧 | 公司環境實測關卡 | `[ ]` | |
 | M2 | S1、S2 與試行 | `[ ]` | |
 | M3 | 修正，加 S3–S6 | `[ ]` | |
@@ -34,6 +34,7 @@
 | D2 | `[ ]` | 錄影保留期限，對照公司規定 | 錄影流程（第 7 節）、第一梯次 | |
 | D3 | `[ ]` | 是否同意修改 react-to-vue 加「給沒有 React 基礎者」說明頁 | M4-6 | |
 | D4 | `[ ]` | 是否在 S0 之前加一場 JS 補強 | 課程場次數 | 看 S0 小測驗結果決定 |
+| D5 | `[ ]` | react-to-vue **沒有任何標記（tag）**，PLAN 要求連結指向標記版本。請在 react-to-vue 打一個標記（例如 `v0.1.0`） | M0-6 的 `shared/SOURCE.json`、M4-4 | 目前暫記 commit `edaefac`；有標記後執行 `node tools/sync-shared.mjs <clone> --ref <標記>` 即可換掉 |
 
 ---
 
@@ -43,15 +44,15 @@
 
 | 編號 | 狀態 | 任務 | 驗證 | 完成日 |
 | --- | --- | --- | --- | --- |
-| M0-1 | `[ ]` | 建立目錄結構：`sessions/`、`shared/`、`tools/`、`.github/workflows/`、`facilitator-guide.md` | 結構與 PLAN 第 8 節一致 | |
-| M0-2 | `[ ]` | 固定版本：Vue 3.5.43、`@vue/compiler-sfc`、vitest、`@vue/test-utils` | `package.json` 與 lockfile 提交 | |
-| M0-3 | `[ ]` | `tools/`：play.vuejs.org 連結編碼與解碼 | 來回一致測試通過 | |
-| M0-4 | `[ ]` | `tools/`：由前後步驟自動產生差異 | 對範例兩步產出正確差異 | |
-| M0-5 | `[ ]` | `tools/`：Markdown 轉示範頁（沿用 react-to-vue 的 docs-build 作法） | 範例頁可開啟、字體大 | |
-| M0-6 | `[ ]` | `shared/`：從 react-to-vue **標記版本**複製樣式與腳本，記錄來源標記與雜湊 | 雜湊檢查腳本可跑 | |
-| M0-7 | `[ ]` | CI：每步四項檢查（見下方「每步檢查」） | CI 綠燈；故意弄壞一步會變紅 | |
-| M0-8 | `[ ]` | CI：每週用無頭瀏覽器開產生的 play.vuejs.org 連結（偵測網址格式改變） | 排程 workflow 跑過一次 | |
-| M0-9 | `[ ]` | 單檔 HTML 備案（內嵌 `vue.global.js`，可 `file://` 開啟） | 斷網下開啟可動 | |
+| M0-1 | `[x]` | 建立目錄結構：`sessions/`、`shared/`、`tools/`、`.github/workflows/`、`facilitator-guide.md` | 結構與 PLAN 第 8 節一致 | 2026-10-12 |
+| M0-2 | `[x]` | 固定版本：Vue 3.5.43、`@vue/compiler-sfc`、vitest、`@vue/test-utils` | `package.json` 與 lockfile 提交 | 2026-10-12 |
+| M0-3 | `[x]` | `tools/`：play.vuejs.org 連結編碼與解碼 | 來回一致測試通過 | 2026-10-12 |
+| M0-4 | `[x]` | `tools/`：由前後步驟自動產生差異 | 對範例兩步產出正確差異 | 2026-10-12 |
+| M0-5 | `[x]` | `tools/`：Markdown 轉示範頁（沿用 react-to-vue 的 docs-build 作法） | 範例頁可開啟、字體大 | 2026-10-12 |
+| M0-6 | `[x]` | `shared/`：從 react-to-vue **標記版本**複製樣式與腳本，記錄來源標記與雜湊 | 雜湊檢查腳本可跑 | 2026-10-12 |
+| M0-7 | `[~]` | CI：每步四項檢查（見下方「每步檢查」） | CI 綠燈；故意弄壞一步會變紅 | |
+| M0-8 | `[x]` | CI：每週用無頭瀏覽器開產生的 play.vuejs.org 連結（偵測網址格式改變） | 排程 workflow 跑過一次 | 2026-10-12 |
+| M0-9 | `[x]` | 單檔 HTML 備案（內嵌 `vue.global.js`，可 `file://` 開啟） | 斷網下開啟可動 | 2026-10-12 |
 
 **每步檢查（CI 必過）**
 
@@ -73,6 +74,7 @@
 | M1-3 | `[ ]` | 測 StackBlitz（Chromium 版本、npm 安裝、網域是否被擋） | 同上 | |
 | M1-4 | `[ ]` | 測 npm registry、`npm ci`、代理與憑證（參考 react-to-vue `docs/troubleshooting.md`） | 同上 | |
 | M1-5 | `[ ]` | 測單檔 HTML 備案 | 同上 | |
+| M1-7 | `[ ]` | 測 jsdelivr／unpkg 能否連線（決定能否用 `import-map.json` 硬性固定 Vue 版本，見變更紀錄 2026-10-12）。agent 的沙箱擋這兩個網域，無法在這裡測 | 每台記錄結果 | |
 | M1-6 | `[ ]` | 寫關卡結論：通過 / 調整工具選擇（改 PLAN 第 6 節） | 結論記入下方「變更紀錄」 | |
 
 ---
@@ -152,4 +154,9 @@
 
 新的在上面。格式：`日期　編號　一句話`。
 
+- 2026-10-12　M0-9　備案：`tools/build-standalone.mjs` 把 App.vue 打成單一 HTML；`npm run test:browser` 在斷網、file:// 下實測通過
+- 2026-10-12　M0-8　`.github/workflows/playground.yml` 每週開真實 play.vuejs.org；已在沙箱實測，格式 `#base64(zlib(JSON))` 可用
+- 2026-10-12　M0-3　**發現**：play.vuejs.org 的 `?vue=版本` 參數無效（以 3.4.0 試過仍載入 3.5.43）。預設 Vue 來自 play.vuejs.org 自己的網域，目前剛好是 3.5.43。作法：連結不帶 `?vue=`，由每週檢查核對版本仍是 3.5.43；硬性固定需 `import-map.json` 指向 CDN，待 M1-7 實測。PLAN 第 6 節已同步
+- 2026-10-12　M0-6　react-to-vue 沒有標記，`shared/SOURCE.json` 暫記 commit edaefac（見 D5）
+- 2026-10-12　M0　依使用者指示改在 main 開發；M0-1～M0-9 完成，M0-7 等 CI 在 GitHub 跑綠後才打勾
 - 2026-10-08　—　建立任務清單，對應 PLAN.md 的 M0–M5 與第 11 節待決事項
