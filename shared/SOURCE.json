@@ -1,7 +1,7 @@
 {
   "repo": "https://github.com/NaClYen/react-to-vue",
-  "ref": "V1.0",
-  "commit": "edaefacd78c8ab9ac3c8c9bf299650fe53b95953",
+  "ref": "V1.1",
+  "commit": "2a9f6dcd0dc269dcea0e622b5032054af98b27b1",
   "files": {
     "guide.css": {
       "from": "docs/assets/guide.css",

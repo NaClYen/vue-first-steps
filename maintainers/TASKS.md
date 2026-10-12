@@ -14,7 +14,7 @@
 
 | 里程碑 | 內容 | 狀態 | 完成日 |
 | --- | --- | --- | --- |
-| D | 待決事項 | `[!]` | D6 要人打標記 |
+| D | 待決事項 | `[x]` | 全部有結論 |
 | M0 | repo 骨架與 CI | `[x]` | 2026-10-12 |
 | M1 🚧 | 公司環境實測關卡 | `[~]` | 通過（依 react-to-vue 經驗）；M1-7、M1-8 另測，不擋 M2 |
 | M2 | S0–S2 內容與試行 | `[!]` | 內容完成；M2-7、M2-8、M2-9 要人做 |
@@ -35,7 +35,7 @@
 | D3 | `[x]` | 是否修改 react-to-vue 加「給沒有 React 基礎者」說明頁 | 2026-10-12 同意，並授權直接推進 react-to-vue 的版本與標記 |
 | D4 | `[x]` | 是否在 S0 前加 JS 補強場 | 不加，讓學員用 AI 輔助學習 |
 | D5 | `[x]` | react-to-vue 沒有標記 | 2026-10-12 使用者建立 `V1.0`；`shared/SOURCE.json` 已指向 `V1.0` |
-| D6 | `[!]` | 在 react-to-vue 打標記 `V1.1`（含 `no-react-start.html`） | **需要人**：agent 的環境推送標記會被擋（`unexpected disconnect`，分支推送正常）。請執行 `git tag V1.1 2a9f6dc && git push origin V1.1`。打完後 M4-4 的連結用 V1.1 |
+| D6 | `[x]` | 在 react-to-vue 打標記 `V1.1`（含 `no-react-start.html`） | 2026-10-12 使用者已打，指向 `2a9f6dc`（已用 GitHub 與 git 核對）；`shared/SOURCE.json` 改記 `V1.1`（樣式與腳本內容與 V1.0 完全相同，雜湊沒變） |
 
 
 ---
@@ -121,9 +121,9 @@
 | M4-1 | `[ ]` | S7：`async`／`await`、`fetch`、載入與錯誤狀態、`watch`（含 `immediate`）、路由基礎、`onBeforeUnmount`、MSW 是什麼；只點名「只保留最新一次回覆」 | 每步 CI 過 | |
 | M4-2 | `[ ]` | S8：TypeScript 型別標註 15 分鐘 + 附註解的 `RuleListView.vue` 導讀 | 註解版檔案與原檔行為一致 | |
 | M4-3 | `[ ]` | S8 讀碼題 5 題與答案、評分標準（4 題過） | 題目對照 PLAN 第 2 節 B | |
-| M4-4 | `[ ]` | S9 交棒：帶開 `reading-guide.html` 第 1、2 節，說明略過「React 對照」，指向 `no-react-start.html`（react-to-vue 的手寫圖解頁是 `.html`；`.md` 是早期存檔） | 連結指向 react-to-vue 標記版本（V1.1，需 D6） | |
+| M4-4 | `[ ]` | S9 交棒：帶開 `reading-guide.html` 第 1、2 節，說明略過「React 對照」，指向 `no-react-start.html`（react-to-vue 的手寫圖解頁是 `.html`；`.md` 是早期存檔） | 連結指向 react-to-vue 標記版本 V1.1 | |
 | M4-5 | `[ ]` | 安裝診所（約第 2 週，協助者帶）：Node、`npm ci`、`npm run dev`、代理與憑證 | 講義加實際演練一次 | |
-| M4-6 | `[~]` | 給沒有 React 基礎者的說明頁與詞彙表：react-to-vue `docs/no-react-start.html`（D3 已同意）。已推到 react-to-vue `main`（`2a9f6dc`），prettier 與連結檢查通過 | 標記 V1.1（D6）；沒參加過試行的人讀過（併入 M4-7） | |
+| M4-6 | `[~]` | 給沒有 React 基礎者的說明頁與詞彙表：react-to-vue `docs/no-react-start.html`（D3 已同意）。已推到 react-to-vue `main`（`2a9f6dc`），prettier 與連結檢查通過 | 標記 V1.1 已打（D6）；沒參加過試行的人讀過（併入 M4-7） | |
 | M4-7 | `[ ]` | 沒參加過試行的人冷試 | 冷試記錄 | |
 
 ---
@@ -159,6 +159,7 @@
 
 新的在上面。格式：`日期　編號　一句話`。
 
+- 2026-10-12　D6　完成：react-to-vue `V1.1` 已存在（先前我只查到 vue-first-steps 的 `V1.1`，是使用者最初貼錯 repo 的連結；後來更正）。`shared/SOURCE.json` 改記 V1.1
 - 2026-10-12　StackBlitz　移除（使用者決定：效益太低）。S0 縮為兩個連結；PLAN 第 6 節加註原因；S7 改用 play.vuejs.org，非同步用 `setTimeout` 模擬，路由與 MSW 只講概念，由 S8 導讀補上；M1-3 取消
 - 2026-10-12　S0　移除 JS 小測驗（使用者決定：偏離主要目標，且 D4 已決定不加補強場後它沒有後續用途）；刪除 `facilitator/s0-quiz-answers.md`，S0 縮為約 10 分鐘
 - 2026-10-12　S0　「連結 1」改成寫死的 play.vuejs.org 連結（原本是 `@play standalone` 建置指令，只有建置後的示範頁才會變成連結，直接看 index.md 是點不了的）；測試會檢查連結解回 `standalone/App.vue`，範例改了就會失敗。示範頁的外部連結一律新分頁開啟
