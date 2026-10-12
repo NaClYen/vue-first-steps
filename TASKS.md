@@ -15,7 +15,7 @@
 | 里程碑 | 內容 | 狀態 | 完成日 |
 | --- | --- | --- | --- |
 | D | 待決事項 | `[ ]` | |
-| M0 | repo 骨架與 CI | `[~]` | |
+| M0 | repo 骨架與 CI | `[!]` | 只差 M0-8 在 GitHub 手動跑一次 |
 | M1 🚧 | 公司環境實測關卡 | `[ ]` | |
 | M2 | S1、S2 與試行 | `[ ]` | |
 | M3 | 修正，加 S3–S6 | `[ ]` | |
@@ -50,8 +50,8 @@
 | M0-4 | `[x]` | `tools/`：由前後步驟自動產生差異 | 對範例兩步產出正確差異 | 2026-10-12 |
 | M0-5 | `[x]` | `tools/`：Markdown 轉示範頁（沿用 react-to-vue 的 docs-build 作法） | 範例頁可開啟、字體大 | 2026-10-12 |
 | M0-6 | `[x]` | `shared/`：從 react-to-vue **標記版本**複製樣式與腳本，記錄來源標記與雜湊 | 雜湊檢查腳本可跑 | 2026-10-12 |
-| M0-7 | `[~]` | CI：每步四項檢查（見下方「每步檢查」） | CI 綠燈；故意弄壞一步會變紅 | |
-| M0-8 | `[x]` | CI：每週用無頭瀏覽器開產生的 play.vuejs.org 連結（偵測網址格式改變） | 排程 workflow 跑過一次 | 2026-10-12 |
+| M0-7 | `[x]` | CI：每步四項檢查（見下方「每步檢查」） | CI 綠燈（run 38195429929）；`tools.test.mjs` 內有故意弄壞一步會被抓到的測試 | 2026-10-12 |
+| M0-8 | `[!]` | CI：每週用無頭瀏覽器開產生的 play.vuejs.org 連結（偵測網址格式改變） | 排程 workflow 在 GitHub 上跑過一次 | |
 | M0-9 | `[x]` | 單檔 HTML 備案（內嵌 `vue.global.js`，可 `file://` 開啟） | 斷網下開啟可動 | 2026-10-12 |
 
 **每步檢查（CI 必過）**
@@ -154,6 +154,8 @@
 
 新的在上面。格式：`日期　編號　一句話`。
 
+- 2026-10-12　M0-7　CI 在 GitHub 跑綠（check 與 browser 兩個 job）
+- 2026-10-12　M0-8　被擋住：agent 沒有權限手動觸發 workflow（403），請人在 Actions 頁面對「Playground link check」按一次 Run workflow；本機已用同一腳本實測通過
 - 2026-10-12　M0-9　備案：`tools/build-standalone.mjs` 把 App.vue 打成單一 HTML；`npm run test:browser` 在斷網、file:// 下實測通過
 - 2026-10-12　M0-8　`.github/workflows/playground.yml` 每週開真實 play.vuejs.org；已在沙箱實測，格式 `#base64(zlib(JSON))` 可用
 - 2026-10-12　M0-3　**發現**：play.vuejs.org 的 `?vue=版本` 參數無效（以 3.4.0 試過仍載入 3.5.43）。預設 Vue 來自 play.vuejs.org 自己的網域，目前剛好是 3.5.43。作法：連結不帶 `?vue=`，由每週檢查核對版本仍是 3.5.43；硬性固定需 `import-map.json` 指向 CDN，待 M1-7 實測。PLAN 第 6 節已同步
