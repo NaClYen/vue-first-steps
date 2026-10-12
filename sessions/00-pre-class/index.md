@@ -10,9 +10,9 @@
 
 ### 連結 1：play.vuejs.org
 
-下面這個連結會開啟一個練習用的範例。成功的樣子：左邊有程式碼，右邊預覽區有一個「按我」按鈕，按下去數字會加一。
+點下面的連結（會在新分頁開啟）。成功的樣子：左邊有程式碼，右邊預覽區有一個「按我」按鈕，按下去數字會加一。
 
-@play standalone
+[在 play.vuejs.org 開啟範例](https://play.vuejs.org/#eNpNjzFLw0AYhv/KR5YqBWNXuR66OejmeIuGlAbby5FcuoTAWZeUBERIlUrQKrRIBq1bweifMXc1U/6CxDg4vw8P7+NrB4ztjDxT29OQazgW4+Ca3GOYUGvIbIeDD47ZgwB6jj2E1sgzW4QSatjU5WDYHuXQrYmt3W1Ckd44cI0gbg7Z4JSbmFAA1O9gefOisgQOT46PQGVP6mGB9H6nmRmWy7G6T4uP+SaN5OetDFelmBVrUc4vqjz+FnGxTlQ8KcOpSi9lNK3yuBQzKSKVJeoxlKs3efVavC82yfOXGCOdNeIzj3Obwr4xsIzzLtF+P7fbRMMqnqjwusrvfP+vJAiQ3vC4jvkXoAU/oLmJpw==)
 
 ### 連結 2：StackBlitz
 

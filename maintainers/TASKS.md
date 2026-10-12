@@ -159,6 +159,8 @@
 
 新的在上面。格式：`日期　編號　一句話`。
 
+- 2026-10-12　S0　「連結 1」改成寫死的 play.vuejs.org 連結（原本是 `@play standalone` 建置指令，只有建置後的示範頁才會變成連結，直接看 index.md 是點不了的）；測試會檢查連結解回 `standalone/App.vue`，範例改了就會失敗。示範頁的外部連結一律新分頁開啟
+- 2026-10-12　D6　使用者也授權 agent 打標記，但再試一次仍被擋：`git push` 標記回 `unexpected disconnect`，環境的 `gh` 憑證無效，GitHub 工具沒有建立標記的功能。仍需人打
 - 2026-10-12　M2　完成 S0、S1、S2 內容（S1、S2 各 3 步，測試對 starter 會失敗、對 solution 會過）、講師手冊、進度表、評分表、S0 解答；停在 M2-7（預錄）、M2-8（招募）、M2-9（試行），這三項要人做。M3 依計畫等試行結果，不先動
 - 2026-10-12　結構　依使用者要求把專案分成輸出（`sessions/`、`shared/`、`facilitator/`）與維護（`maintainers/`）；PLAN 第 8 節同步。步驟測試仍放在 `sessions/` 內，由 `maintainers/` 的 vitest 執行（root 設為專案根、套件 alias 指到 `maintainers/node_modules`）
 - 2026-10-12　工具　starter 的題目註解用 `@task-start`／`@task-end` 夾住：「starter = 上一步 solution」的檢查與差異產生都忽略這些區塊（否則題目沒地方放）；solution 不可含標記

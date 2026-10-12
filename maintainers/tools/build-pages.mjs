@@ -49,6 +49,13 @@ export function expandDirectives(markdown, sessionDir) {
 export function renderPage(markdown, sessionDir) {
   const marked = new Marked({
     renderer: {
+      // 外部連結一律新分頁開啟（同一分頁只換 # 後面時 play.vuejs.org 不會重新載入內容）
+      link({ href, title, tokens }) {
+        const inner = this.parser.parseInline(tokens)
+        const titleAttr = title ? ` title="${escapeHtml(title)}"` : ''
+        const external = /^https?:/.test(href) ? ' target="_blank" rel="noopener"' : ''
+        return `<a href="${escapeHtml(href)}"${titleAttr}${external}>${inner}</a>`
+      },
       code({ text, lang }) {
         const attr = lang ? ` data-lang="${escapeHtml(lang)}"` : ''
         return `<pre class="code"><code${attr}>${escapeHtml(text)}</code></pre>\n`

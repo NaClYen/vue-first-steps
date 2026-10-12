@@ -114,6 +114,17 @@ describe('check-shared', () => {
   })
 })
 
+describe('index.md 內寫死的 play.vuejs.org 連結', () => {
+  const sessions = path.join(here, '../../sessions')
+  test('S0 的範例連結解回 standalone/App.vue（改了範例要重新產生連結）', () => {
+    const md = readFileSync(path.join(sessions, '00-pre-class/index.md'), 'utf8')
+    const url = /\]\((https:\/\/play\.vuejs\.org\/#[^)\s]+)\)/.exec(md)?.[1]
+    expect(url, '找不到 S0 的 play.vuejs.org 連結').toBeTruthy()
+    const app = readFileSync(path.join(sessions, '00-pre-class/standalone/App.vue'), 'utf8')
+    expect(parseUrl(url).files).toEqual({ 'App.vue': app })
+  })
+})
+
 describe('build-pages', () => {
   test('產生示範頁，指令被展開', async () => {
     const out = temp()
@@ -124,6 +135,7 @@ describe('build-pages', () => {
     expect(html).toContain('data-lang="diff"')
     expect(html).toContain('data-lang="vue"')
     expect(html).not.toMatch(/^@(play|diff|code)/m)
+    expect(html).toMatch(/<a href="https:\/\/play\.vuejs\.org\/#[^"]+" target="_blank"/)
     expect(readFileSync(path.join(out, 'assets/guide.css'), 'utf8').length).toBeGreaterThan(1000)
   })
 })
