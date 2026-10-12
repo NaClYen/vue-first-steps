@@ -1,8 +1,8 @@
 # vue-first-steps 計畫書
 
-給「會 JavaScript、沒碰過 Vue」的工程師，用視訊會議（分享單一視窗）帶領，目標是讓他們能順著 [react-to-vue](https://github.com/NaClYen/react-to-vue) 的《從畫面讀 Vue》（`docs/reading-guide.md`）讀下去。
+給「會 JavaScript、沒碰過 Vue」的工程師，用視訊會議（分享單一視窗）帶領，目標是讓他們能順著 [react-to-vue](https://github.com/NaClYen/react-to-vue) 的《從畫面讀 Vue》（`docs/reading-guide.html`，手寫的圖解頁）讀下去。
 
-本計畫由初稿加上兩輪審查（Opus）整理而成。狀態：**計畫階段，尚未開始製作內容**。
+本計畫由初稿加上兩輪審查（Opus）整理而成。進度與任務見 [TASKS.md](TASKS.md)。
 
 ## 1. 已定案的決定
 
@@ -14,7 +14,11 @@
 | 每場時間 | 30 到 60 分鐘，場次數依內容而定（見第 3 節） |
 | 可用工具 | StackBlitz、play.vuejs.org；公司網路是否擋其他網域尚未實測（見第 8 節 M1） |
 | 協助者 | 可以找第二位協助者，但每次使用都要有理由（見第 5 節規則） |
-| 專案關係 | 另開 repo；連結指向 react-to-vue 的**標記版本**，不指向 `main` |
+| 學員 JS 基礎不足 | 不另加補強場；請本人用 AI 輔助自學（2026-10-12 決定） |
+| 公司環境 | 依 react-to-vue 的經驗，工具基本上都可執行（2026-10-12 使用者確認）；不同之處另行測試（見 TASKS M1） |
+| 專案關係 | 另開 repo；連結指向 react-to-vue 的**標記版本**（目前 `V1.0`），不指向 `main` |
+| 開發 | 直接在 `main` 開發（2026-10-12 決定） |
+| 專案結構 | 輸出（`sessions/`、`shared/`、`facilitator/`）與維護（`maintainers/`）分開（見第 8 節） |
 | 維護方式 | 由 AI agent 維護；內容用繁體中文 |
 | 提交署名 | commit 作者用使用者自己的 git 身分，訊息不加 Claude 署名 |
 
@@ -63,7 +67,7 @@
 | **S6 結業檢查 A** | 60 | 現場 40 分鐘做 TODO，20 分鐘講評 |
 | S7 | 45 | `async`／`await`、`fetch`、載入與錯誤狀態、`watch`、路由基礎（`route.query`、`router.push`、`RouterLink`、路由守衛是什麼）、模擬服務（MSW）是什麼。只點名「只保留最新一次回覆」，不教 |
 | **S8 結業檢查 B** | 60 | 15 分鐘讀 TypeScript 型別標註，再導讀附註解的 `RuleListView.vue`，最後做讀碼題 |
-| S9 交棒 | 45 | 一起開啟 `reading-guide.md` 第 1、2 節，說明怎麼略過「React 對照」 |
+| S9 交棒 | 45 | 一起開啟 `reading-guide.html` 第 1、2 節，說明怎麼略過「React 對照」，並指向 `no-react-start.html`（給沒有 React 基礎者的說明頁） |
 
 ### 必須補上的內容（初稿曾漏掉）
 
@@ -120,25 +124,32 @@ Node、`npm ci`、`npm run dev` 要處理公司代理與憑證問題（見 react
 
 - 邀請信與開場各說明一次；鏡頭可選；分組討論室不錄。
 - 專用瀏覽器設定檔、關閉通知、聊天室不上畫面；不出現內部網址、權杖、客戶資料。
-- 原始錄影保留期限暫定 90 天，成品短片長期保留。**須對照公司規定確認**。
 - 剪輯：講師在進度表記下「Step N」的時間點，用 `ffmpeg -ss … -to … -c copy`（不重新編碼）剪成每步 3 到 5 分鐘；字幕用會議工具的逐字稿。
 
 ## 8. 新 repo 的做法與建置順序
 
-### 結構（暫定）
+### 結構
+
+分成「輸出」（交付給講師與學員）與「維護」（只給維護者與 agent）兩邊：
 
 ```text
 vue-first-steps/
-├── PLAN.md
-├── facilitator-guide.md        講師手冊：時間、講稿、常見卡點、共享檢查表
-├── sessions/NN-名稱/
-│   ├── index.md                唯一來源；轉成示範頁（大字、逐步）
-│   ├── steps/NN/{starter,solution,test}
-│   └── clips.md                對應的短片清單
-├── shared/                     從 react-to-vue 複製的樣式與腳本，附來源版本與雜湊
-├── tools/                      產生 play.vuejs.org 連結、產生差異、轉換 HTML
-└── .github/workflows/          CI
+├── README.md、CLAUDE.md
+├── sessions/NN-名稱/               輸出：學員看得到
+│   ├── index.md                    唯一來源；轉成示範頁（大字、逐步）
+│   └── steps/NN/{starter,solution,test}
+├── shared/                         輸出：從 react-to-vue 標記版本複製的樣式與腳本，附來源與雜湊
+├── facilitator/                    輸出：只給講師。講師手冊、進度表、評分表、小測驗解答
+├── dist/                           建置結果（不進 git）
+├── maintainers/                    維護
+│   ├── PLAN.md、TASKS.md
+│   ├── package.json、vitest.config.mjs   相依套件只裝在這裡
+│   └── tools/                      產生 play.vuejs.org 連結、產生差異、轉換 HTML、檢查
+└── .github/workflows/              CI
 ```
+
+- 題目寫在每一步 `starter` 的註解裡，用 `@task-start`／`@task-end` 夾住。「starter = 上一步 solution」的檢查會忽略這些區塊，產生差異時也不算。
+- 步驟測試（`test/`）放在 `sessions/` 內，但由 `maintainers/` 的 vitest 執行，所以學員 ZIP 不需要 `node_modules`。
 
 - 示範頁由 Markdown 產生（沿用 react-to-vue 的 `docs-build` 作法），**不手寫 HTML、不做投影片**。
 - 每一步的差異由前後步驟**自動產生**，不手寫。
@@ -150,14 +161,14 @@ vue-first-steps/
 1. 用 `@vue/compiler-sfc` 編譯。
 2. 用 vitest 與 `@vue/test-utils` 掛載並跑測試（測試同時是學員的自我檢查）。
 3. 產生的連結能解回原檔（來回一致）。
-4. 每個起始專案 = 上一步的解答，由 CI 強制。
+4. 每個起始專案 = 上一步的解答（差異只能是 `@task` 題目註解），由 CI 強制。
 
 ### 建置順序
 
 | 里程碑 | 內容 | 驗證 |
 | --- | --- | --- |
 | **M0** | repo 骨架、連結編碼與解碼、版本固定、CI | CI 綠燈 |
-| **M1（關卡）** | 在**兩台真實公司筆電與公司網路**測 play.vuejs.org、CDN、StackBlitz、npm registry | 不過就調整工具選擇，**不繼續做內容** |
+| **M1（關卡）** | 在**公司筆電與公司網路**測 play.vuejs.org、CDN、StackBlitz、npm registry。2026-10-12：使用者依 react-to-vue 的經驗確認基本上都可執行，不同之處另測 | 不過就調整工具選擇，**不繼續做內容** |
 | **M2** | 做 S1、S2、進度表、評分表；找 2 到 3 人試行（一位 JS 強、一位弱、一位用受限制的筆電） | 量各步實際分鐘數、卡點、能否只看分享就跟上 |
 | **M3** | 依試行修正（預期時間要多約三成），再做 S3 到 S6 | 結業檢查 A 冷試一次 |
 | **M4** | 做 S7 到 S9、安裝診所、給沒有 React 基礎者用的《reading-guide》說明頁 | 沒參加過試行的人冷試 |
@@ -171,7 +182,7 @@ vue-first-steps/
 
 - react-to-vue 現在的 `reading-guide.md` 與 `react-vue-comparison.md` **預期讀者認識 React**。沒有 React 基礎的人會卡在「React 對照」方塊與詞彙。
 - **最大風險**：玩具 TODO 與真實專案之間有落差。路由、`watch` 加 `immediate`、「只保留最新一次回覆」、TypeScript、MSW 都只出現在真實程式碼裡。對策：S7 提前教路由與 `watch`；S8 導讀附註解的真實檔案；M4 做一頁給沒有 React 基礎者的說明。
-- **需要對 react-to-vue 做的小修改（尚未同意、尚未動手）**：加一頁給沒有 React 基礎者的說明，告訴他們跳過「React 對照」並附詞彙表。
+- **對 react-to-vue 的小修改（2026-10-12 使用者同意並授權）**：加一頁給沒有 React 基礎者的說明（`docs/no-react-start.html`），告訴他們跳過「React 對照」並附詞彙表。已推到 react-to-vue 的 `main`（commit `2a9f6dc`），待打標記 `V1.1`（見 TASKS D6）。
 
 ## 10. 風險
 
@@ -184,9 +195,11 @@ vue-first-steps/
 | 內容與 react-to-vue 逐漸不一致 | 連結指向標記版本；共用資源用雜湊檢查 |
 | agent 修改步驟卻沒跑 | 每步 CI；起始專案等於上一步解答 |
 
-## 11. 還沒決定的事
+## 11. 決定紀錄（原「還沒決定的事」）
 
-1. 每梯次預計人數（決定協助者規則是否適用）。
-2. 錄影的保留期限與公司規定。
-3. 是否同意修改 react-to-vue 加上給沒有 React 基礎者的說明頁。
-4. 是否需要在第 0 場之前加一場 JS 補強（取決於 S0 小測驗的結果）。
+2026-10-12 全部有結論：
+
+1. 每梯次預計人數：**刪除**，不在目前規劃範圍。
+2. 錄影的保留期限與公司規定：**刪除**，不在目前規劃範圍。
+3. 修改 react-to-vue 加說明頁：**同意**，並授權直接推進 react-to-vue 的版本與標記。
+4. 是否在 S0 前加 JS 補強場：**不加**，讓學員用 AI 輔助學習。
