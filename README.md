@@ -15,7 +15,7 @@
 
 | 場次 | 內容 | 狀態 |
 | --- | --- | --- |
-| [S0](sessions/00-pre-class/index.md) | 課前準備：開三個連結 | 完成 |
+| [S0](sessions/00-pre-class/index.md) | 課前準備：開兩個連結 | 完成 |
 | [S1](sessions/01-read-vue-file/index.md) | 看懂 `.vue` 檔 | 完成，待試行 |
 | [S2](sessions/02-input-and-forms/index.md) | 輸入框與表單、讀錯誤訊息 | 完成，待試行 |
 | S3–S9 | 見計畫書第 3 節 | 未開始（等試行結果） |

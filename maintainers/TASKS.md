@@ -4,7 +4,7 @@
 
 ## 使用方式
 
-- 狀態：`[ ]` 未開始　`[~]` 進行中　`[x]` 完成　`[!]` 被擋住（要在備註寫原因）
+- 狀態：`[ ]` 未開始　`[~]` 進行中　`[x]` 完成　`[!]` 被擋住（要在備註寫原因）　`[-]` 取消
 - 每項有固定編號（如 `M1-2`），commit 訊息與紀錄都引用編號，編號不重用、不改號。
 - 完成一項時：打勾、填完成日期、必要時在「變更紀錄」加一行。
 - 關卡（🚧）沒過，後面的里程碑不開始。
@@ -75,7 +75,7 @@
 | --- | --- | --- | --- | --- |
 | M1-1 | `[x]` | 取得兩台真實公司筆電與公司網路的測試機會 | 約定時間 | 2026-10-12（依 react-to-vue 經驗） |
 | M1-2 | `[x]` | 測 play.vuejs.org（含 CDN 載入 Vue、長網址、複製網址存檔） | 每台記錄結果與截圖 | 2026-10-12（依 react-to-vue 經驗） |
-| M1-3 | `[x]` | 測 StackBlitz（Chromium 版本、npm 安裝、網域是否被擋） | 同上 | 2026-10-12（依 react-to-vue 經驗） |
+| M1-3 | `[-]` | ~~測 StackBlitz~~ 已取消：2026-10-12 決定不用 StackBlitz | | |
 | M1-4 | `[x]` | 測 npm registry、`npm ci`、代理與憑證（參考 react-to-vue `docs/troubleshooting.md`） | 同上 | 2026-10-12（依 react-to-vue 經驗） |
 | M1-5 | `[x]` | 測單檔 HTML 備案 | 同上 | 2026-10-12（依 react-to-vue 經驗） |
 | M1-7 | `[ ]` | **請測**：公司網路能不能連 `cdn.jsdelivr.net`／`unpkg.com`（決定能否用 `import-map.json` 硬性固定 Vue 版本，見變更紀錄）。agent 的沙箱擋這兩個網域，無法在這裡測。不通也沒關係：目前作法不依賴 CDN | 記錄結果 | |
@@ -88,7 +88,7 @@
 
 | 編號 | 狀態 | 任務 | 驗證 | 完成日 |
 | --- | --- | --- | --- | --- |
-| M2-1 | `[~]` | S0 課前：三個連結截圖作業（約 10 分鐘）。內容在 `sessions/00-pre-class/`（小測驗已於 2026-10-12 移除） | 在公司環境走過一遍（agent 只在沙箱驗證過 play.vuejs.org 連結與離線 check.html；StackBlitz 沙箱連不到，未驗證） | |
+| M2-1 | `[~]` | S0 課前：兩個連結截圖作業（約 10 分鐘）。內容在 `sessions/00-pre-class/`（小測驗已於 2026-10-12 移除） | 在公司環境走過一遍（agent 只在沙箱驗證過 play.vuejs.org 連結與離線 check.html；StackBlitz 沙箱連不到，未驗證） | |
 | M2-2 | `[x]` | S1：`.vue` 結構、`{{ }}`、`@click`、`ref` 與 `.value`；steps 的 starter／solution／test | 每步 CI 四項檢查過（CI run 38198340703 綠燈；測試對 starter 失敗、對 solution 通過） | 2026-10-12 |
 | M2-3 | `[x]` | S2：`reactive`、`v-model`、`@submit.prevent`、讀錯誤訊息與主控台 | 同上（CI run 38198340703 綠燈；測試對 starter 失敗、對 solution 通過） | 2026-10-12 |
 | M2-4 | `[~]` | 進度表範本（人名 × 步驟）：`facilitator/progress-sheet.md` | 試行時實際使用 | |
@@ -159,6 +159,7 @@
 
 新的在上面。格式：`日期　編號　一句話`。
 
+- 2026-10-12　StackBlitz　移除（使用者決定：效益太低）。S0 縮為兩個連結；PLAN 第 6 節加註原因；S7 改用 play.vuejs.org，非同步用 `setTimeout` 模擬，路由與 MSW 只講概念，由 S8 導讀補上；M1-3 取消
 - 2026-10-12　S0　移除 JS 小測驗（使用者決定：偏離主要目標，且 D4 已決定不加補強場後它沒有後續用途）；刪除 `facilitator/s0-quiz-answers.md`，S0 縮為約 10 分鐘
 - 2026-10-12　S0　「連結 1」改成寫死的 play.vuejs.org 連結（原本是 `@play standalone` 建置指令，只有建置後的示範頁才會變成連結，直接看 index.md 是點不了的）；測試會檢查連結解回 `standalone/App.vue`，範例改了就會失敗。示範頁的外部連結一律新分頁開啟
 - 2026-10-12　D6　使用者也授權 agent 打標記，但再試一次仍被擋：`git push` 標記回 `unexpected disconnect`，環境的 `gh` 憑證無效，GitHub 工具沒有建立標記的功能。仍需人打
